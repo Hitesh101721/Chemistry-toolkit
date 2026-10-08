@@ -1,167 +1,292 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chemistry Toolkit</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chemistry Toolkit</title>
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #0f172a;
-      color: white;
-      margin: 0;
-      padding: 30px 20px;
-      text-align: center;
-    }
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #0f172a;
+    color: white;
+    margin: 0;
+    padding: 30px 20px;
+    text-align: center;
+}
 
-    .container {
-      max-width: 700px;
-      margin: auto;
-    }
+.container {
+    max-width: 700px;
+    margin: auto;
+}
 
-    h1 {
-      font-size: 32px;
-      margin-bottom: 8px;
-    }
+h1 {
+    font-size: 32px;
+    margin-bottom: 8px;
+}
 
-    .subtitle {
-      color: #94a3b8;
-      margin-bottom: 30px;
-    }
+.subtitle {
+    color: #94a3b8;
+    margin-bottom: 30px;
+}
 
-    .card {
-      background: #1e293b;
-      padding: 25px;
-      border-radius: 18px;
-      text-align: left;
-    }
+.card {
+    background: #1e293b;
+    padding: 30px;
+    border-radius: 25px;
+    text-align: left;
+}
 
-    label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: bold;
-    }
+label {
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
 
-    input, select {
-      width: 100%;
-      box-sizing: border-box;
-      padding: 14px;
-      margin-bottom: 18px;
-      border-radius: 10px;
-      border: 1px solid #475569;
-      background: #0f172a;
-      color: white;
-      font-size: 16px;
-    }
+input, select {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 18px;
+    margin-bottom: 25px;
+    border-radius: 15px;
+    border: 1px solid #475569;
+    background: #0f172a;
+    color: white;
+    font-size: 17px;
+}
 
-    button {
-      width: 100%;
-      padding: 14px;
-      border: none;
-      border-radius: 10px;
-      background: #22c55e;
-      color: white;
-      font-size: 17px;
-      font-weight: bold;
-      cursor: pointer;
-    }
+button {
+    width: 100%;
+    padding: 18px;
+    border: none;
+    border-radius: 15px;
+    background: #22c55e;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
 
-    #result {
-      margin-top: 25px;
-      padding: 20px;
-      background: #0f172a;
-      border-radius: 12px;
-      display: none;
-    }
+button:hover {
+    background: #16a34a;
+}
 
-    .step {
-      margin: 12px 0;
-      padding: 12px;
-      background: #1e293b;
-      border-radius: 8px;
-    }
-  </style>
+#result {
+    margin-top: 30px;
+}
+
+.step {
+    background: #1e293b;
+    margin-top: 15px;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: left;
+    border-left: 4px solid #22c55e;
+}
+
+.step h3 {
+    margin-top: 0;
+    color: #86efac;
+}
+
+.important {
+    color: #facc15;
+    font-weight: bold;
+}
+</style>
 </head>
 
 <body>
 
-  <div class="container">
+<div class="container">
 
     <h1>🧪 Chemistry Toolkit</h1>
 
-    <p class="subtitle">
-      Organic Chemistry Mechanism Generator
-    </p>
+    <div class="subtitle">
+        Organic Chemistry Mechanism Generator
+    </div>
 
     <div class="card">
 
-      <label for="reaction">Enter Reaction</label>
+        <label>Enter Reaction</label>
 
-      <input
-        id="reaction"
-        type="text"
-        placeholder="Example: Acetone + HCN"
-      >
+        <input
+            id="reaction"
+            type="text"
+            placeholder="Example: Acetone + HCN"
+        >
 
-      <label for="mechanism">Select Mechanism</label>
+        <label>Select Mechanism</label>
 
-      <select id="mechanism">
-        <option>Nucleophilic Addition</option>
-        <option>SN1</option>
-        <option>SN2</option>
-        <option>Aldol Condensation</option>
-        <option>E1</option>
-        <option>E2</option>
-      </select>
+        <select id="mechanism">
 
-      <button onclick="generateMechanism()">
-        Generate Mechanism
-      </button>
+            <option value="addition">
+                Nucleophilic Addition
+            </option>
 
-      <div id="result"></div>
+            <option value="sn1">
+                SN1
+            </option>
+
+            <option value="sn2">
+                SN2
+            </option>
+
+            <option value="aldol">
+                Aldol Condensation
+            </option>
+
+            <option value="e1">
+                E1
+            </option>
+
+            <option value="e2">
+                E2
+            </option>
+
+        </select>
+
+        <button onclick="generateMechanism()">
+            Generate Mechanism
+        </button>
 
     </div>
 
-  </div>
+    <div id="result"></div>
 
-  <script>
+</div>
 
-    function generateMechanism() {
+<script>
 
-      const reaction = document.getElementById("reaction").value;
-      const mechanism = document.getElementById("mechanism").value;
-      const result = document.getElementById("result");
+function generateMechanism() {
 
-      if (reaction.trim() === "") {
-        result.style.display = "block";
-        result.innerHTML = "⚠️ Please enter a reaction.";
+    const reaction =
+        document.getElementById("reaction").value.trim();
+
+    const mechanism =
+        document.getElementById("mechanism").value;
+
+    const result =
+        document.getElementById("result");
+
+    if (reaction === "") {
+
+        result.innerHTML = `
+            <div class="step">
+                <h3>⚠️ Enter a reaction</h3>
+                <p>Example: Acetone + HCN</p>
+            </div>
+        `;
+
         return;
-      }
-
-      result.style.display = "block";
-
-      result.innerHTML = `
-        <h2>${mechanism}</h2>
-
-        <div class="step">
-          <strong>Step 1</strong><br>
-          Reaction: ${reaction}
-        </div>
-
-        <div class="step">
-          <strong>Step 2</strong><br>
-          Mechanism analysis will appear here.
-        </div>
-
-        <div class="step">
-          <strong>Step 3</strong><br>
-          Curved-arrow mechanism will be added in the next version.
-        </div>
-      `;
     }
 
-  </script>
+    if (
+        mechanism === "addition" &&
+        reaction.toLowerCase().includes("acetone") &&
+        reaction.toLowerCase().includes("hcn")
+    ) {
+
+        result.innerHTML = `
+
+        <div class="step">
+
+            <h3>Step 1 — Nucleophilic Attack</h3>
+
+            <p>
+            HCN provides the nucleophile
+            <span class="important">CN⁻</span>.
+            </p>
+
+            <p>
+            The cyanide ion attacks the
+            electrophilic carbon of the carbonyl group
+            (C=O) in acetone.
+            </p>
+
+            <p>
+            At the same time, the
+            <span class="important">π electrons of C=O move toward oxygen.</span>
+            </p>
+
+        </div>
+
+        <div class="step">
+
+            <h3>Step 2 — Tetrahedral Intermediate</h3>
+
+            <p>
+            After nucleophilic attack, the carbonyl carbon
+            becomes tetrahedral.
+            </p>
+
+            <p>
+            Oxygen now carries a
+            <span class="important">negative charge (O⁻)</span>.
+            </p>
+
+            <p>
+            The newly formed C–CN bond remains attached
+            to the former carbonyl carbon.
+            </p>
+
+        </div>
+
+        <div class="step">
+
+            <h3>Step 3 — Protonation</h3>
+
+            <p>
+            The negatively charged oxygen is protonated
+            by HCN.
+            </p>
+
+            <p>
+            This produces the final
+            <span class="important">cyanohydrin</span>.
+            </p>
+
+            <p>
+            <strong>Product:</strong>
+            Acetone cyanohydrin
+            </p>
+
+        </div>
+
+        `;
+
+    } else {
+
+        result.innerHTML = `
+
+        <div class="step">
+
+            <h3>🧪 Mechanism Selected</h3>
+
+            <p>
+            Reaction:
+            <strong>${reaction}</strong>
+            </p>
+
+            <p>
+            Mechanism:
+            <strong>${mechanism}</strong>
+            </p>
+
+            <p>
+            Detailed mechanism for this reaction
+            will be added in the next development phase.
+            </p>
+
+        </div>
+
+        `;
+
+    }
+}
+
+</script>
 
 </body>
 </html>
