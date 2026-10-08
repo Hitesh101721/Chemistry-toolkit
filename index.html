@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chemistry Toolkit</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: white;
+      margin: 0;
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: auto;
+    }
+
+    h1 {
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      color: #94a3b8;
+      margin-bottom: 30px;
+    }
+
+    .card {
+      background: #1e293b;
+      padding: 25px;
+      border-radius: 18px;
+      text-align: left;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    input, select {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 14px;
+      margin-bottom: 18px;
+      border-radius: 10px;
+      border: 1px solid #475569;
+      background: #0f172a;
+      color: white;
+      font-size: 16px;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      background: #22c55e;
+      color: white;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    #result {
+      margin-top: 25px;
+      padding: 20px;
+      background: #0f172a;
+      border-radius: 12px;
+      display: none;
+    }
+
+    .step {
+      margin: 12px 0;
+      padding: 12px;
+      background: #1e293b;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <h1>🧪 Chemistry Toolkit</h1>
+
+    <p class="subtitle">
+      Organic Chemistry Mechanism Generator
+    </p>
+
+    <div class="card">
+
+      <label for="reaction">Enter Reaction</label>
+
+      <input
+        id="reaction"
+        type="text"
+        placeholder="Example: Acetone + HCN"
+      >
+
+      <label for="mechanism">Select Mechanism</label>
+
+      <select id="mechanism">
+        <option>Nucleophilic Addition</option>
+        <option>SN1</option>
+        <option>SN2</option>
+        <option>Aldol Condensation</option>
+        <option>E1</option>
+        <option>E2</option>
+      </select>
+
+      <button onclick="generateMechanism()">
+        Generate Mechanism
+      </button>
+
+      <div id="result"></div>
+
+    </div>
+
+  </div>
+
+  <script>
+
+    function generateMechanism() {
+
+      const reaction = document.getElementById("reaction").value;
+      const mechanism = document.getElementById("mechanism").value;
+      const result = document.getElementById("result");
+
+      if (reaction.trim() === "") {
+        result.style.display = "block";
+        result.innerHTML = "⚠️ Please enter a reaction.";
+        return;
+      }
+
+      result.style.display = "block";
+
+      result.innerHTML = `
+        <h2>${mechanism}</h2>
+
+        <div class="step">
+          <strong>Step 1</strong><br>
+          Reaction: ${reaction}
+        </div>
+
+        <div class="step">
+          <strong>Step 2</strong><br>
+          Mechanism analysis will appear here.
+        </div>
+
+        <div class="step">
+          <strong>Step 3</strong><br>
+          Curved-arrow mechanism will be added in the next version.
+        </div>
+      `;
+    }
+
+  </script>
+
+</body>
+</html>
