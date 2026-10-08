@@ -1,22 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
 <title>Chemistry Toolkit</title>
 
 <style>
+
 body {
     font-family: Arial, sans-serif;
     background: #0f172a;
     color: white;
     margin: 0;
-    padding: 30px 20px;
+    padding: 25px 15px;
     text-align: center;
 }
 
 .container {
-    max-width: 700px;
+    max-width: 750px;
     margin: auto;
 }
 
@@ -32,7 +37,7 @@ h1 {
 
 .card {
     background: #1e293b;
-    padding: 30px;
+    padding: 25px;
     border-radius: 25px;
     text-align: left;
 }
@@ -44,27 +49,45 @@ label {
     margin-bottom: 10px;
 }
 
-input, select {
+input,
+select {
+
     width: 100%;
     box-sizing: border-box;
-    padding: 18px;
-    margin-bottom: 25px;
-    border-radius: 15px;
+
+    padding: 17px;
+
+    margin-bottom: 22px;
+
+    border-radius: 14px;
+
     border: 1px solid #475569;
+
     background: #0f172a;
+
     color: white;
+
     font-size: 17px;
 }
 
 button {
+
     width: 100%;
-    padding: 18px;
+
+    padding: 17px;
+
     border: none;
-    border-radius: 15px;
+
+    border-radius: 14px;
+
     background: #22c55e;
+
     color: white;
+
     font-size: 18px;
+
     font-weight: bold;
+
     cursor: pointer;
 }
 
@@ -77,216 +100,800 @@ button:hover {
 }
 
 .step {
+
     background: #1e293b;
-    margin-top: 15px;
+
     padding: 20px;
-    border-radius: 15px;
-    text-align: left;
+
+    border-radius: 20px;
+
     border-left: 4px solid #22c55e;
 }
 
-.step h3 {
-    margin-top: 0;
+.step-title {
+
     color: #86efac;
+
+    font-size: 22px;
+
+    margin-bottom: 10px;
+}
+
+.explanation {
+
+    color: #cbd5e1;
+
+    line-height: 1.6;
+
+    text-align: left;
+
+    margin-top: 15px;
+}
+
+.diagram {
+
+    background: #020617;
+
+    border-radius: 18px;
+
+    padding: 10px;
+
+    margin-top: 15px;
+
+    overflow-x: auto;
+}
+
+.diagram svg {
+
+    width: 100%;
+
+    min-width: 320px;
+
+    height: 260px;
+}
+
+.atom {
+
+    font-size: 24px;
+
+    font-weight: bold;
+}
+
+.charge {
+
+    font-size: 18px;
+
+    font-weight: bold;
+}
+
+.arrow {
+
+    stroke: #38bdf8;
+
+    stroke-width: 4;
+
+    fill: none;
+}
+
+.bond {
+
+    stroke: white;
+
+    stroke-width: 4;
+}
+
+.dashed {
+
+    stroke: #94a3b8;
+
+    stroke-width: 3;
+
+    stroke-dasharray: 8 7;
+}
+
+.navigation {
+
+    display: flex;
+
+    gap: 12px;
+
+    margin-top: 20px;
+}
+
+.navigation button {
+
+    flex: 1;
+
+    background: #334155;
+}
+
+.navigation button:hover {
+
+    background: #475569;
+}
+
+.counter {
+
+    color: #94a3b8;
+
+    margin-top: 12px;
+
+    font-size: 14px;
 }
 
 .important {
+
     color: #facc15;
+
     font-weight: bold;
 }
+
 </style>
+
 </head>
+
 
 <body>
 
+
 <div class="container">
 
-    <h1>🧪 Chemistry Toolkit</h1>
 
-    <div class="subtitle">
-        Organic Chemistry Mechanism Generator
-    </div>
+<h1>🧪 Chemistry Toolkit</h1>
 
-    <div class="card">
+<div class="subtitle">
+Organic Chemistry Mechanism Generator
+</div>
 
-        <label>Enter Reaction</label>
 
-        <input
-            id="reaction"
-            type="text"
-            placeholder="Example: Acetone + HCN"
-        >
+<div class="card">
 
-        <label>Select Mechanism</label>
 
-        <select id="mechanism">
+<label>
+Enter Reaction
+</label>
 
-            <option value="addition">
-                Nucleophilic Addition
-            </option>
 
-            <option value="sn1">
-                SN1
-            </option>
+<input
+id="reaction"
+type="text"
+placeholder="Example: Acetone + HCN"
+>
 
-            <option value="sn2">
-                SN2
-            </option>
 
-            <option value="aldol">
-                Aldol Condensation
-            </option>
+<label>
+Select Mechanism
+</label>
 
-            <option value="e1">
-                E1
-            </option>
 
-            <option value="e2">
-                E2
-            </option>
+<select id="mechanism">
 
-        </select>
+<option value="addition">
+Nucleophilic Addition
+</option>
 
-        <button onclick="generateMechanism()">
-            Generate Mechanism
-        </button>
+<option value="sn1">
+SN1
+</option>
 
-    </div>
+<option value="sn2">
+SN2
+</option>
 
-    <div id="result"></div>
+<option value="aldol">
+Aldol Condensation
+</option>
+
+<option value="e1">
+E1
+</option>
+
+<option value="e2">
+E2
+</option>
+
+</select>
+
+
+<button onclick="generateMechanism()">
+
+Generate Mechanism
+
+</button>
+
 
 </div>
 
+
+<div id="result"></div>
+
+
+</div>
+
+
+
 <script>
+
+
+let currentStep = 0;
+
+
+const steps = [
+
+{
+
+title: "Step 1 — Nucleophilic Attack",
+
+diagram: `
+
+<svg viewBox="0 0 600 260">
+
+
+<!-- carbonyl carbon -->
+
+<text x="275" y="125"
+class="atom">
+C
+</text>
+
+
+<!-- oxygen -->
+
+<text x="275" y="55"
+class="atom">
+O
+</text>
+
+
+<!-- C=O double bond -->
+
+<line
+x1="290"
+y1="90"
+x2="290"
+y2="70"
+class="bond"
+/>
+
+<line
+x1="305"
+y1="90"
+x2="305"
+y2="70"
+class="bond"
+/>
+
+
+<!-- methyl groups -->
+
+<text x="165" y="130"
+class="atom">
+CH₃
+</text>
+
+<text x="350" y="130"
+class="atom">
+CH₃
+</text>
+
+
+<line
+x1="215"
+y1="120"
+x2="260"
+y2="120"
+class="bond"
+/>
+
+<line
+x1="325"
+y1="120"
+x2="345"
+y2="120"
+class="bond"
+/>
+
+
+<!-- cyanide -->
+
+<text x="95" y="225"
+class="atom">
+CN⁻
+</text>
+
+
+<!-- cyanide attack arrow -->
+
+<path
+d="M 130 205 Q 190 160 250 130"
+class="arrow"
+/>
+
+
+<polygon
+points="250,130 238,126 242,140"
+fill="#38bdf8"
+/>
+
+
+<!-- pi electron arrow -->
+
+<path
+d="M 300 75 Q 355 55 375 80"
+class="arrow"
+/>
+
+
+<polygon
+points="375,80 363,72 367,86"
+fill="#38bdf8"
+/>
+
+
+<text x="55" y="250"
+fill="#38bdf8"
+font-size="15">
+CN⁻ attacks carbonyl carbon
+</text>
+
+
+</svg>
+`,
+
+explanation: `
+
+The cyanide ion (CN⁻) acts as the
+<strong>nucleophile</strong>.
+
+It attacks the electrophilic carbon
+of the carbonyl group.
+
+At the same time, the
+<strong>π electrons of C=O move onto oxygen.</strong>
+
+This is a nucleophilic addition reaction.
+
+`
+
+},
+
+
+{
+
+title: "Step 2 — Tetrahedral Intermediate",
+
+diagram: `
+
+<svg viewBox="0 0 600 260">
+
+
+<!-- central carbon -->
+
+<text x="275" y="130"
+class="atom">
+C
+</text>
+
+
+<!-- oxygen -->
+
+<text x="275" y="55"
+class="atom">
+O⁻
+</text>
+
+
+<!-- vertical bond -->
+
+<line
+x1="290"
+y1="105"
+x2="290"
+y2="70"
+class="bond"
+/>
+
+
+<!-- methyl -->
+
+<text x="150" y="135"
+class="atom">
+CH₃
+</text>
+
+
+<line
+x1="200"
+y1="125"
+x2="260"
+y2="125"
+class="bond"
+/>
+
+
+<!-- methyl -->
+
+<text x="350" y="135"
+class="atom">
+CH₃
+</text>
+
+
+<line
+x1="325"
+y1="125"
+x2="345"
+y2="125"
+class="bond"
+/>
+
+
+<!-- CN -->
+
+<text x="270" y="220"
+class="atom">
+CN
+</text>
+
+
+<line
+x1="290"
+y1="150"
+x2="290"
+y2="205"
+class="bond"
+/>
+
+
+<text x="155" y="250"
+fill="#facc15"
+font-size="16">
+
+Oxygen now carries a negative charge
+
+</text>
+
+
+</svg>
+`,
+
+explanation: `
+
+After CN⁻ attack, the carbonyl carbon
+becomes <strong>tetrahedral</strong>.
+
+The C=O double bond has become a
+single C–O bond.
+
+Oxygen now carries a
+<strong>negative charge (O⁻)</strong>.
+
+A new C–CN bond has formed.
+
+`
+
+},
+
+
+{
+
+title: "Step 3 — Protonation",
+
+diagram: `
+
+<svg viewBox="0 0 600 260">
+
+
+<!-- carbon -->
+
+<text x="275" y="135"
+class="atom">
+C
+</text>
+
+
+<!-- OH -->
+
+<text x="270" y="55"
+class="atom">
+OH
+</text>
+
+
+<line
+x1="290"
+y1="105"
+x2="290"
+y2="70"
+class="bond"
+/>
+
+
+<!-- methyl -->
+
+<text x="150" y="140"
+class="atom">
+CH₃
+</text>
+
+
+<line
+x1="200"
+y1="130"
+x2="260"
+y2="130"
+class="bond"
+/>
+
+
+<!-- methyl -->
+
+<text x="350" y="140"
+class="atom">
+CH₃
+</text>
+
+
+<line
+x1="325"
+y1="130"
+x2="345"
+y2="130"
+class="bond"
+/>
+
+
+<!-- CN -->
+
+<text x="270" y="220"
+class="atom">
+CN
+</text>
+
+
+<line
+x1="290"
+y1="155"
+x2="290"
+y2="205"
+class="bond"
+/>
+
+
+<!-- proton -->
+
+<text x="440" y="55"
+class="atom">
+H
+</text>
+
+
+<!-- protonation arrow -->
+
+<path
+d="M 400 70 Q 360 75 325 70"
+class="arrow"
+/>
+
+
+<polygon
+points="325,70 337,65 335,78"
+fill="#38bdf8"
+/>
+
+
+<text x="375" y="105"
+fill="#38bdf8"
+font-size="15">
+
+Protonation
+
+</text>
+
+
+</svg>
+`,
+
+explanation: `
+
+The negatively charged oxygen is
+<strong>protonated</strong>.
+
+The proton comes from HCN.
+
+The final product is
+<strong>acetone cyanohydrin</strong>.
+
+The overall transformation is:
+
+<strong>Acetone + HCN → Acetone cyanohydrin</strong>
+
+`
+
+}
+
+];
+
 
 function generateMechanism() {
 
-    const reaction =
-        document.getElementById("reaction").value.trim();
 
-    const mechanism =
-        document.getElementById("mechanism").value;
+const reaction =
+document
+.getElementById("reaction")
+.value
+.trim();
 
-    const result =
-        document.getElementById("result");
 
-    if (reaction === "") {
+const mechanism =
+document
+.getElementById("mechanism")
+.value;
 
-        result.innerHTML = `
-            <div class="step">
-                <h3>⚠️ Enter a reaction</h3>
-                <p>Example: Acetone + HCN</p>
-            </div>
-        `;
 
-        return;
-    }
+if (reaction === "") {
 
-    if (
-        mechanism === "addition" &&
-        reaction.toLowerCase().includes("acetone") &&
-        reaction.toLowerCase().includes("hcn")
-    ) {
+document.getElementById("result").innerHTML = `
 
-        result.innerHTML = `
+<div class="step">
 
-        <div class="step">
+<div class="step-title">
+⚠️ Enter a reaction
+</div>
 
-            <h3>Step 1 — Nucleophilic Attack</h3>
+<p>
+Example: Acetone + HCN
+</p>
 
-            <p>
-            HCN provides the nucleophile
-            <span class="important">CN⁻</span>.
-            </p>
+</div>
 
-            <p>
-            The cyanide ion attacks the
-            electrophilic carbon of the carbonyl group
-            (C=O) in acetone.
-            </p>
+`;
 
-            <p>
-            At the same time, the
-            <span class="important">π electrons of C=O move toward oxygen.</span>
-            </p>
+return;
 
-        </div>
-
-        <div class="step">
-
-            <h3>Step 2 — Tetrahedral Intermediate</h3>
-
-            <p>
-            After nucleophilic attack, the carbonyl carbon
-            becomes tetrahedral.
-            </p>
-
-            <p>
-            Oxygen now carries a
-            <span class="important">negative charge (O⁻)</span>.
-            </p>
-
-            <p>
-            The newly formed C–CN bond remains attached
-            to the former carbonyl carbon.
-            </p>
-
-        </div>
-
-        <div class="step">
-
-            <h3>Step 3 — Protonation</h3>
-
-            <p>
-            The negatively charged oxygen is protonated
-            by HCN.
-            </p>
-
-            <p>
-            This produces the final
-            <span class="important">cyanohydrin</span>.
-            </p>
-
-            <p>
-            <strong>Product:</strong>
-            Acetone cyanohydrin
-            </p>
-
-        </div>
-
-        `;
-
-    } else {
-
-        result.innerHTML = `
-
-        <div class="step">
-
-            <h3>🧪 Mechanism Selected</h3>
-
-            <p>
-            Reaction:
-            <strong>${reaction}</strong>
-            </p>
-
-            <p>
-            Mechanism:
-            <strong>${mechanism}</strong>
-            </p>
-
-            <p>
-            Detailed mechanism for this reaction
-            will be added in the next development phase.
-            </p>
-
-        </div>
-
-        `;
-
-    }
 }
+
+
+if (
+
+mechanism === "addition" &&
+
+reaction
+.toLowerCase()
+.includes("acetone") &&
+
+reaction
+.toLowerCase()
+.includes("hcn")
+
+) {
+
+currentStep = 0;
+
+showStep();
+
+}
+
+else {
+
+document.getElementById("result").innerHTML = `
+
+<div class="step">
+
+<div class="step-title">
+🧪 Mechanism Selected
+</div>
+
+<p>
+Reaction:
+<strong>${reaction}</strong>
+</p>
+
+<p>
+This mechanism will be added
+in the next development phase.
+</p>
+
+</div>
+
+`;
+
+}
+
+}
+
+
+function showStep() {
+
+
+const step = steps[currentStep];
+
+
+document.getElementById("result").innerHTML = `
+
+<div class="step">
+
+<div class="step-title">
+
+${step.title}
+
+</div>
+
+
+<div class="diagram">
+
+${step.diagram}
+
+</div>
+
+
+<div class="explanation">
+
+${step.explanation}
+
+</div>
+
+
+<div class="navigation">
+
+<button
+onclick="previousStep()"
+${currentStep === 0 ? "disabled" : ""}>
+← Previous
+</button>
+
+
+<button
+onclick="nextStep()"
+${currentStep === steps.length - 1 ? "disabled" : ""}>
+Next →
+</button>
+
+</div>
+
+
+<div class="counter">
+
+Step ${currentStep + 1} of ${steps.length}
+
+</div>
+
+</div>
+
+`;
+
+}
+
+
+function nextStep() {
+
+if (currentStep < steps.length - 1) {
+
+currentStep++;
+
+showStep();
+
+}
+
+}
+
+
+function previousStep() {
+
+if (currentStep > 0) {
+
+currentStep--;
+
+showStep();
+
+}
+
+}
+
 
 </script>
 
+
 </body>
+
 </html>
