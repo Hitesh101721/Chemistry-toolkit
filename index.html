@@ -51,43 +51,26 @@ label {
 
 input,
 select {
-
     width: 100%;
     box-sizing: border-box;
-
     padding: 17px;
-
     margin-bottom: 22px;
-
     border-radius: 14px;
-
     border: 1px solid #475569;
-
     background: #0f172a;
-
     color: white;
-
     font-size: 17px;
 }
 
 button {
-
     width: 100%;
-
     padding: 17px;
-
     border: none;
-
     border-radius: 14px;
-
     background: #22c55e;
-
     color: white;
-
     font-size: 18px;
-
     font-weight: bold;
-
     cursor: pointer;
 }
 
@@ -95,61 +78,47 @@ button:hover {
     background: #16a34a;
 }
 
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
 #result {
     margin-top: 30px;
 }
 
 .step {
-
     background: #1e293b;
-
     padding: 20px;
-
     border-radius: 20px;
-
     border-left: 4px solid #22c55e;
 }
 
 .step-title {
-
     color: #86efac;
-
     font-size: 22px;
-
     margin-bottom: 10px;
 }
 
 .explanation {
-
     color: #cbd5e1;
-
     line-height: 1.6;
-
     text-align: left;
-
     margin-top: 15px;
 }
 
 .diagram {
-
     background: #020617;
-
     border-radius: 18px;
-
     padding: 10px;
-
     margin-top: 15px;
-
     overflow-x: auto;
 }
 
 .diagram svg {
-
     width: 100%;
-
     min-width: 320px;
-
-    height: 260px;
+    height: 300px;
 }
 
 .atom {
@@ -163,72 +132,41 @@ button:hover {
     font-weight: bold;
     fill: white;
 }
-.charge {
-
-    font-size: 18px;
-
-    font-weight: bold;
-}
 
 .arrow {
-
     stroke: #38bdf8;
-
     stroke-width: 4;
-
     fill: none;
 }
 
 .bond {
-
     stroke: white;
-
     stroke-width: 4;
 }
 
-.dashed {
-
-    stroke: #94a3b8;
-
-    stroke-width: 3;
-
-    stroke-dasharray: 8 7;
-}
-
 .navigation {
-
     display: flex;
-
     gap: 12px;
-
     margin-top: 20px;
 }
 
 .navigation button {
-
     flex: 1;
-
     background: #334155;
 }
 
 .navigation button:hover {
-
     background: #475569;
 }
 
 .counter {
-
     color: #94a3b8;
-
     margin-top: 12px;
-
     font-size: 14px;
 }
 
 .important {
-
     color: #facc15;
-
     font-weight: bold;
 }
 
@@ -236,12 +174,9 @@ button:hover {
 
 </head>
 
-
 <body>
 
-
 <div class="container">
-
 
 <h1>🧪 Chemistry Toolkit</h1>
 
@@ -249,14 +184,11 @@ button:hover {
 Organic Chemistry Mechanism Generator
 </div>
 
-
 <div class="card">
-
 
 <label>
 Enter Reaction
 </label>
-
 
 <input
 id="reaction"
@@ -264,11 +196,9 @@ type="text"
 placeholder="Example: Acetone + HCN"
 >
 
-
 <label>
 Select Mechanism
 </label>
-
 
 <select id="mechanism">
 
@@ -298,29 +228,19 @@ E2
 
 </select>
 
-
 <button onclick="generateMechanism()">
-
 Generate Mechanism
-
 </button>
 
-
 </div>
-
 
 <div id="result"></div>
 
-
 </div>
-
-
 
 <script>
 
-
 let currentStep = 0;
-
 
 const steps = [
 
@@ -332,24 +252,15 @@ diagram: `
 
 <svg viewBox="0 0 600 260">
 
-
-<!-- carbonyl carbon -->
-
 <text x="275" y="125"
 class="atom">
 C
 </text>
 
-
-<!-- oxygen -->
-
 <text x="275" y="55"
 class="atom">
 O
 </text>
-
-
-<!-- C=O double bond -->
 
 <line
 x1="290"
@@ -367,9 +278,6 @@ y2="70"
 class="bond"
 />
 
-
-<!-- methyl groups -->
-
 <text x="165" y="130"
 class="atom">
 CH₃
@@ -379,7 +287,6 @@ CH₃
 class="atom">
 CH₃
 </text>
-
 
 <line
 x1="215"
@@ -397,30 +304,20 @@ y2="120"
 class="bond"
 />
 
-
-<!-- cyanide -->
-
 <text x="95" y="225"
 class="atom">
 CN⁻
 </text>
-
-
-<!-- cyanide attack arrow -->
 
 <path
 d="M 130 205 Q 190 160 250 130"
 class="arrow"
 />
 
-
 <polygon
 points="250,130 238,126 242,140"
 fill="#38bdf8"
 />
-
-
-<!-- pi electron arrow -->
 
 <path
 d="M 300 75 Q 315 58 290 55"
@@ -437,7 +334,6 @@ fill="#38bdf8"
 font-size="15">
 CN⁻ attacks carbonyl carbon
 </text>
-
 
 </svg>
 `,
@@ -459,7 +355,6 @@ This is a nucleophilic addition reaction.
 
 },
 
-
 {
 
 title: "Step 2 — Tetrahedral Intermediate",
@@ -468,24 +363,15 @@ diagram: `
 
 <svg viewBox="0 0 600 260">
 
-
-<!-- central carbon -->
-
 <text x="275" y="130"
 class="atom">
 C
 </text>
 
-
-<!-- oxygen -->
-
 <text x="275" y="55"
 class="atom">
 O⁻
 </text>
-
-
-<!-- vertical bond -->
 
 <line
 x1="290"
@@ -495,14 +381,10 @@ y2="70"
 class="bond"
 />
 
-
-<!-- methyl -->
-
 <text x="150" y="135"
 class="atom">
 CH₃
 </text>
-
 
 <line
 x1="200"
@@ -512,14 +394,10 @@ y2="125"
 class="bond"
 />
 
-
-<!-- methyl -->
-
 <text x="350" y="135"
 class="atom">
 CH₃
 </text>
-
 
 <line
 x1="325"
@@ -529,14 +407,10 @@ y2="125"
 class="bond"
 />
 
-
-<!-- CN -->
-
 <text x="270" y="220"
 class="atom">
 CN
 </text>
-
 
 <line
 x1="290"
@@ -546,15 +420,11 @@ y2="205"
 class="bond"
 />
 
-
 <text x="155" y="250"
 fill="#facc15"
 font-size="16">
-
 Oxygen now carries a negative charge
-
 </text>
-
 
 </svg>
 `,
@@ -576,168 +446,105 @@ A new C–CN bond has formed.
 
 },
 
-
 {
 
 title: "Step 3 — Protonation",
 
 diagram: `
 
-
 <svg viewBox="0 0 600 300">
 
-<!-- Product: central carbon -->
-<text x="275" y="145" class="atom">C</text>
+<!-- tetrahedral intermediate -->
 
-<!-- OH -->
-<text x="268" y="65" class="atom">OH</text>
-
-<line x1="290" y1="115" x2="290" y2="80" class="bond"/>
-
-<text x="135" y="150" class="atom">CH₃</text>
-<line x1="185" y1="140" x2="260" y2="140" class="bond"/>
-
-<text x="365" y="150" class="atom">CH₃</text>
-<line x1="325" y1="140" x2="355" y2="140" class="bond"/>
-
-<text x="270" y="235" class="atom">CN</text>
-<line x1="290" y1="165" x2="290" y2="220" class="bond"/>
-
-<!-- HCN -->
-<text x="450" y="65" class="atom">H–C≡N</text>
-
-<!-- O⁻ → H -->
-<path d="M 330 95 Q 380 65 435 65" class="arrow"/>
-
-<polygon
-points="435,65 422,59 424,72"
-fill="#38bdf8"/>
-
-<!-- H–C bond → CN -->
-<path d="M 455 80 Q 430 115 405 130" class="arrow"/>
-
-<polygon
-points="405,130 418,128 412,118"
-fill="#38bdf8"/>
-
-<text x="345" y="45" fill="#38bdf8" font-size="15">
-O⁻ attacks H
-</text>
-
-<text x="375" y="155" fill="#38bdf8" font-size="15">
-H–CN electrons → CN⁻
-</text>
-
-</svg>
-`,
-
-
-<!-- carbon -->
-
-<text x="275" y="135"
+<text x="275" y="145"
 class="atom">
 C
 </text>
 
+<!-- O negative -->
 
-<!-- OH -->
-
-<text x="270" y="55"
+<text x="268" y="65"
 class="atom">
-OH
+O⁻
 </text>
-
 
 <line
 x1="290"
-y1="105"
+y1="115"
 x2="290"
-y2="70"
+y2="80"
 class="bond"
 />
 
+<!-- methyl groups -->
 
-<!-- methyl -->
-
-<text x="150" y="140"
+<text x="135" y="150"
 class="atom">
 CH₃
 </text>
-
 
 <line
-x1="200"
-y1="130"
+x1="185"
+y1="140"
 x2="260"
-y2="130"
+y2="140"
 class="bond"
 />
 
-
-<!-- methyl -->
-
-<text x="350" y="140"
+<text x="365" y="150"
 class="atom">
 CH₃
 </text>
-
 
 <line
 x1="325"
-y1="130"
-x2="345"
-y2="130"
+y1="140"
+x2="355"
+y2="140"
 class="bond"
 />
 
-
 <!-- CN -->
 
-<text x="270" y="220"
+<text x="270" y="235"
 class="atom">
 CN
 </text>
 
-
 <line
 x1="290"
-y1="155"
+y1="165"
 x2="290"
-y2="205"
+y2="220"
 class="bond"
 />
 
+<!-- H positive -->
 
-<!-- proton -->
-
-<text x="440" y="55"
+<text x="455" y="70"
 class="atom">
-H
+H⁺
 </text>
 
-
-<!-- protonation arrow -->
+<!-- O negative attacks H positive -->
 
 <path
-d="M 400 70 Q 360 75 325 70"
+d="M 310 65 Q 375 35 445 65"
 class="arrow"
 />
 
-
 <polygon
-points="325,70 337,65 335,78"
+points="445,65 432,59 435,72"
 fill="#38bdf8"
 />
 
-
-<text x="375" y="105"
+<text
+x="330"
+y="35"
 fill="#38bdf8"
 font-size="15">
-
-Protonation
-
+O⁻ → H⁺
 </text>
-
 
 </svg>
 `,
@@ -747,14 +554,13 @@ explanation: `
 The negatively charged oxygen is
 <strong>protonated</strong>.
 
-The proton comes from HCN.
+The lone pair on O⁻ attacks the
+<strong>H⁺</strong>.
+
+This forms the O–H bond.
 
 The final product is
 <strong>acetone cyanohydrin</strong>.
-
-The overall transformation is:
-
-<strong>Acetone + HCN → Acetone cyanohydrin</strong>
 
 `
 
@@ -762,9 +568,7 @@ The overall transformation is:
 
 ];
 
-
 function generateMechanism() {
-
 
 const reaction =
 document
@@ -772,12 +576,10 @@ document
 .value
 .trim();
 
-
 const mechanism =
 document
 .getElementById("mechanism")
 .value;
-
 
 if (reaction === "") {
 
@@ -800,7 +602,6 @@ Example: Acetone + HCN
 return;
 
 }
-
 
 if (
 
@@ -850,37 +651,25 @@ in the next development phase.
 
 }
 
-
 function showStep() {
 
-
 const step = steps[currentStep];
-
 
 document.getElementById("result").innerHTML = `
 
 <div class="step">
 
 <div class="step-title">
-
 ${step.title}
-
 </div>
-
 
 <div class="diagram">
-
 ${step.diagram}
-
 </div>
-
 
 <div class="explanation">
-
 ${step.explanation}
-
 </div>
-
 
 <div class="navigation">
 
@@ -890,7 +679,6 @@ ${currentStep === 0 ? "disabled" : ""}>
 ← Previous
 </button>
 
-
 <button
 onclick="nextStep()"
 ${currentStep === steps.length - 1 ? "disabled" : ""}>
@@ -899,11 +687,8 @@ Next →
 
 </div>
 
-
 <div class="counter">
-
 Step ${currentStep + 1} of ${steps.length}
-
 </div>
 
 </div>
@@ -911,7 +696,6 @@ Step ${currentStep + 1} of ${steps.length}
 `;
 
 }
-
 
 function nextStep() {
 
@@ -925,7 +709,6 @@ showStep();
 
 }
 
-
 function previousStep() {
 
 if (currentStep > 0) {
@@ -938,9 +721,7 @@ showStep();
 
 }
 
-
 </script>
-
 
 </body>
 
